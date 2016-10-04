@@ -75,6 +75,6 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
-$app = \es\ucm\fdi\aw\Aplicacion::getSingleton();
+$app = \equipo\Aplicacion::getSingleton();
 $app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS), RUTA_APP, RAIZ_APP);
 ?>
