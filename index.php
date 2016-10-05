@@ -25,7 +25,7 @@ $user= new \equipo\usuario();
 
 			<form action= "logarse.php" method="post" enctype='multipart/form-data'>
 				<p>Nick: <input type="text" name="nick" value="" required></p>
-				<p>Contraseña: <input type="text" name="pass" value="" required></p>
+				<p>Contraseña: <input type="password" name="pass" value="" required></p>
 
 				<input type="submit" value="Iniciar">
 			</form>
