@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2016 a las 00:49:14
+-- Tiempo de generación: 05-10-2016 a las 21:51:28
 -- Versión del servidor: 5.5.40
 -- Versión de PHP: 5.5.19
 
@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS `objetos` (
   `nick` varchar(30) NOT NULL,
   `ayuda` text NOT NULL,
   `comprado` tinyint(1) NOT NULL DEFAULT '0',
-  `reservado` tinyint(1) NOT NULL DEFAULT '0'
+  `reservado` tinyint(1) NOT NULL DEFAULT '0',
+  `esExtra` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
