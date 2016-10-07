@@ -16,8 +16,8 @@ class Usuario {
 
   public static function login($nick, $password) {
   	$app = App::getSingleton();
-    $conn = $app->conexionBd();  
-  	
+    $conn = $app->conexionBd(); 
+    $password = sha1($password); 
   	$query = sprintf("SELECT password FROM usuario WHERE nick='$nick'");
   	$rs = $conn->query($query);
   	
@@ -25,21 +25,18 @@ class Usuario {
       $fila = $rs->fetch_assoc();
       $pass = $fila['password'];
       $rs->free();
-  	  if($password ==$pass){
-
-        header("Location:principal.php");
-      }
-      else
-        header("Location:index.php");
+  	  if($password ==$pass)
+        return true;
     }
     else
-      header("Location:index.php");
+      return false;
   }
 
-  private static function existeUsuario($nick) {
+  public static function existeUsuario($nick) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM usuario WHERE nick='$conn->real_escape_string($nick)'");
+    
+    $query = sprintf("SELECT * FROM usuario WHERE nick= '$nick'");
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows == 1) {
       $rs->free();
@@ -59,14 +56,16 @@ class Usuario {
 	public function cambiarPass($nick,$pass) {
 		$app = App::getSingleton();
 		$conn = $app->conexionBd();
+    $pass = sha1($pass);
 		$query = sprintf("UPDATE usuario SET password='$pass' WHERE nick='$nick'");
 		$rs = $conn->query($query);
 	}
 		  
 	public function registraUsuario($nick,$password) {
-		$ruta="img/avatar/default.jpg";
+
 		$app = App::getSingleton();
 		$conn = $app->conexionBd();
+    $password = sha1($password);
 		$query = sprintf("INSERT INTO usuario (nick,password) VALUES ('$nick','$password')");
 		$rs = $conn->query($query);
 	}

@@ -29,6 +29,8 @@ $user= new \equipo\usuario();
 
 				<input type="submit" value="Iniciar">
 			</form>
+
+			<button type="button" onclick="location.href = 'cambiar_contra.php'" >Contraseña</button>
 			<!--
 			
 							<php $contenidos= $cont -> cargaContenidoRecientes($plataforma,"noticia");
