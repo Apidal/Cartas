@@ -11,8 +11,10 @@ $nick = $_POST["nick"];
 $pass = $_POST["pass"];
 //$pass = sha1($pass);
 
-if($usuario->login($nick,$pass))
+if($usuario->login($nick,$pass)){
+	$_SESSION['nombre'] = $nick;
 	header("Location:principal.php");
+}
 else
 	header("Location:./");
 
