@@ -23,6 +23,11 @@ $obj = new \equipo\Objeto();
 			    $("#2").click(function(){
 					$(location).attr('href',"./cartas.php");
 			    });
+
+			    $("#botonCerrar").click(function(){
+
+					$(location).attr('href',"./cerrarSesion.php");
+			    });
 			});
 		</script>
 		
@@ -30,8 +35,11 @@ $obj = new \equipo\Objeto();
 	
 <body>
 	<?php		
-	//require ('views/header.php');
-	echo $_SESSION['nombre'];
+	require ('views/cerrarSesion.php');
+	if(isset($_SESSION['nombre']))
+		echo $_SESSION['nombre'];
+	else
+		header("Location:./");
 
 	?>
 		
