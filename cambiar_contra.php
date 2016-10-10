@@ -4,6 +4,9 @@ require_once __DIR__.'/includes/Usuario.php';
 
 $usuario = new \equipo\Usuario();
 
+
+session_destroy();
+
 ?>
 <!DOCTYPE HTML>
 <hmtl>
