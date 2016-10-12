@@ -6,6 +6,7 @@ require_once __DIR__.'/includes/Objeto.php';
 $user= new \equipo\Usuario();
 $obj = new \equipo\Objeto();
 
+
 ?>
 <!DOCTYPE HTML>
 <hmtl>
@@ -16,14 +17,6 @@ $obj = new \equipo\Objeto();
 		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
 		<script>
 			$(document).ready(function(){
-			    $("#1").click(function(){  
-					$(location).attr('href',"./miCarta.php");
-			    });
-
-			    $("#2").click(function(){
-					$(location).attr('href',"./cartas.php");
-			    });
-
 			    $("#botonCerrar").click(function(){
 					$(location).attr('href',"./cerrarSesion.php");
 			    });
@@ -34,19 +27,34 @@ $obj = new \equipo\Objeto();
 	
 <body>
 	<?php		
-		require ('views/cerrarSesion.php');
-		if(isset($_SESSION['nombre']))
-			echo $_SESSION['nombre'];
-		else
-			header("Location:./");
+	require ('views/cerrarSesion.php');
+	if(isset($_SESSION['nombre'])){
+		echo $_SESSION['nombre'];
+		$nick = $_SESSION['nombre'];
+	}
+	else
+		header("Location:./");
+
 	?>
 		
 		<!-- === CONTENIDO === -->
 		<div id="contenedor">
-			<button id="1">MI CARTA</button>
-			<button id="2">OTRAS CARTAS</button>
-			<p><a href="./miCarta.php"> MI CARTA</a></p>
-			<p><a href="./cartas.php"> CARTAS</a></p>
+			<p><h1>Mi carta</h1></p>
+			<?php
+				$misObjetos = $obj->recuperarCarta($nick);
+				if(empty($misObjetos)){
+			?>	
+					<p><h2>Todavía no has añadido ningún objeto</h2></p>
+			<?php
+				}
+				else{
+					$obj->pintarObjetos($misObjetos);
+			?>
+					<button type="button" onclick="location.href = './anadirObjeto.php'" >Añadir</button>
+			<?php
+				}
+
+			?>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

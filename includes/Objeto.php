@@ -28,6 +28,7 @@ class Objeto {
     $conn = $app->conexionBd();  
     $query = sprintf("SELECT * FROM objetos where nick = '$nick'");
     $rs = $conn->query($query);
+    $objetos = null;
     if($rs){
       $i=1;
       
@@ -48,6 +49,7 @@ class Objeto {
     $conn = $app->conexionBd();
     $query = sprintf("SELECT nombre FROM objetos where nick <> '$nick'");
     $rs = $conn->query($query);
+    $cartas = null;
     if($rs){
       $i=1;
       
@@ -66,15 +68,33 @@ class Objeto {
   public function anadirObjeto($nick, $nombre, $ayuda, $esExtra){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO objetos VALUES ('$con->real_escape_string($nombre)', '$con->real_escape_string($ayuda)', 0, 0, $nick, $esExtra");
+    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$ayuda', 0, 0, $esExtra)");
     $rs = $conn->query($query);
   }
 
    public function editarObjeto($nick, $nombre, $ayuda){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE objetos SET ayuda = '$con->real_escape_string($ayuda)' WHERE nick='$nick' AND nombre = '$nombre'");
+    $query = sprintf("UPDATE objetos SET ayuda = '$ayuda' WHERE nick='$nick' AND nombre = '$nombre'");
     $rs = $conn->query($query);
+  }
+
+  public function pintarObjetos($objetos){
+   echo "<form action='editarObjeto.php' method='POST'>";
+    foreach ($objetos as $objeto) {
+      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
+    }
+    echo "<input type='submit' value='Editar'>";
+   echo "</form>";
+  }
+
+  public function recuperarObjeto($nombre){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT ayuda FROM objetos where nombre = '$nombre'");
+    $rs = $conn->query($query);
+    $fila = $rs->fetch_assoc();
+    return $fila['ayuda'];
   }
 
 

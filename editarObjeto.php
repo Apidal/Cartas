@@ -6,6 +6,7 @@ require_once __DIR__.'/includes/Objeto.php';
 $user= new \equipo\Usuario();
 $obj = new \equipo\Objeto();
 
+
 ?>
 <!DOCTYPE HTML>
 <hmtl>
@@ -16,15 +17,9 @@ $obj = new \equipo\Objeto();
 		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
 		<script>
 			$(document).ready(function(){
-			    $("#1").click(function(){  
-					$(location).attr('href',"./miCarta.php");
-			    });
-
-			    $("#2").click(function(){
-					$(location).attr('href',"./cartas.php");
-			    });
-
+			    
 			    $("#botonCerrar").click(function(){
+
 					$(location).attr('href',"./cerrarSesion.php");
 			    });
 			});
@@ -34,19 +29,28 @@ $obj = new \equipo\Objeto();
 	
 <body>
 	<?php		
-		require ('views/cerrarSesion.php');
-		if(isset($_SESSION['nombre']))
-			echo $_SESSION['nombre'];
-		else
-			header("Location:./");
+	require ('views/cerrarSesion.php');
+	if(isset($_SESSION['nombre'])){
+		echo $_SESSION['nombre'];
+		$nombre = $_POST["nomObj"];
+		$ayuda = $obj->recuperarObjeto($nombre);
+		
+	}
+	else
+		header("Location:./");
+
 	?>
 		
 		<!-- === CONTENIDO === -->
 		<div id="contenedor">
-			<button id="1">MI CARTA</button>
-			<button id="2">OTRAS CARTAS</button>
-			<p><a href="./miCarta.php"> MI CARTA</a></p>
-			<p><a href="./cartas.php"> CARTAS</a></p>
+			<p><h1>Editar objeto</h1></p>
+			<form action="./guardarEditar.php" method="POST">
+				<p>Nombre: <input type="text" name="nombre" value=<?php echo $nombre;?> readonly></p>
+				<p>Ayuda: <input type="text" name="ayuda" value="<?php echo $ayuda;?>" required></p>
+				<input type="submit" value="Guardar">
+			</form>
+
+			<button type="button" onclick="location.href = './miCarta.php'" >Cancelar</button>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

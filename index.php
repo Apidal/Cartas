@@ -29,27 +29,7 @@ $user= new \equipo\usuario();
 			</form>
 
 			<button type="button" onclick="location.href = 'cambiar_contra.php'" >Contraseña</button>
-			<!--
-			
-							<php $contenidos= $cont -> cargaContenidoRecientes($plataforma,"noticia");
-							$count =count($contenidos);
-							if($count>0){
-								for($i = 1; $i <= $count && $i <=4   ; $i++) {
-									$id = $contenidos[$i]['id'];
-									echo "<li>
-										<div onclick=location.href='noticiaX.php?id=".$id."' style='cursor:pointer' >";
-									$img = $contenidos[$i]['imagen_portada'];
-									echo "<img class='destacBg md-whiteframe-2' src = ".$img.">";
-									$titulo = $contenidos[$i]['titulo'];
-									echo "<p>".$titulo."</p>";
-									echo "</div></li>";
-								}
-							}else{
-								echo "<li><div><p>Aun no hay noticias :( </p></div></li>";
-							}
-							?>
-							-->
-		
+					
 		</div> <!-- FIN Contenedor -->
 
 	</body>
