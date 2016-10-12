@@ -84,7 +84,7 @@ class Objeto {
     foreach ($objetos as $objeto) {
       echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
     }
-    echo "<input type='submit' value='Editar'>";
+    echo "<input type='submit' value='EDITAR'>";
    echo "</form>";
   }
 

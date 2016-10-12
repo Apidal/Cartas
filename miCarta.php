@@ -47,14 +47,13 @@ $obj = new \equipo\Objeto();
 					<p><h2>Todavía no has añadido ningún objeto</h2></p>
 			<?php
 				}
-				else{
+				else
 					$obj->pintarObjetos($misObjetos);
 			?>
-					<button type="button" onclick="location.href = './anadirObjeto.php'" >Añadir</button>
-			<?php
-				}
-
-			?>
+			
+			<button type="button" onclick="location.href = './anadirObjeto.php'" >AÑADIR</button>
+			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			
 		</div> <!-- FIN Contenedor -->
 	
 	</body>
