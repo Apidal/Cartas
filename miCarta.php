@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Principal </title>
+		<title> Mi Carta </title>
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
@@ -31,6 +31,7 @@ $obj = new \equipo\Objeto();
 	if(isset($_SESSION['nombre'])){
 		echo $_SESSION['nombre'];
 		$nick = $_SESSION['nombre'];
+		$_SESSION['duenoCarta'] = $nick;
 	}
 	else
 		header("Location:./");
@@ -48,7 +49,7 @@ $obj = new \equipo\Objeto();
 			<?php
 				}
 				else
-					$obj->pintarObjetos($misObjetos);
+					$obj->formularioMiCarta($misObjetos);
 			?>
 			
 			<button type="button" onclick="location.href = './anadirObjeto.php'" >AÑADIR</button>

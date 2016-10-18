@@ -47,7 +47,7 @@ class Objeto {
    public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nombre FROM objetos where nick <> '$nick'");
+    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick'");
     $rs = $conn->query($query);
     $cartas = null;
     if($rs){
@@ -72,20 +72,47 @@ class Objeto {
     $rs = $conn->query($query);
   }
 
-   public function editarObjeto($nick, $nombre, $ayuda){
+   public function editarObjeto($nick, $nombre, $comprado, $reservado){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("UPDATE objetos SET comprado = $comprado, reservado = $reservado WHERE nick='$nick' AND nombre = '$nombre'");
+    $rs = $conn->query($query);
+  }
+
+   public function editarObjetoPropio($nick, $nombre, $ayuda){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
     $query = sprintf("UPDATE objetos SET ayuda = '$ayuda' WHERE nick='$nick' AND nombre = '$nombre'");
     $rs = $conn->query($query);
   }
 
-  public function pintarObjetos($objetos){
-   echo "<form action='editarObjeto.php' method='POST'>";
+  public function formularioMiCarta($objetos){
+    echo "<form action='editarObjeto.php' method='POST'>";
     foreach ($objetos as $objeto) {
       echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
     }
     echo "<input type='submit' value='EDITAR'>";
-   echo "</form>";
+    echo "</form>";
+  }
+
+  public function formularioCartaX($objetos){
+    echo "<form action='com_lib_res_obj.php' method='POST'>";
+    foreach ($objetos as $objeto) {
+      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
+    }
+    echo "<input type='submit' name ='COMPRADO' value='COMPRADO'>";
+    echo "<input type='submit' name ='RESERVADO' value='RESERVADO'>";
+    echo "<input type='submit' name ='LIBERAR' value='LIBERAR'>";
+    echo "</form>";
+  }
+
+  public function pintarCartas($nombres){
+    echo "<form action='cartaX.php' method='POST'>";
+    foreach ($nombres as $nombre) {
+      echo "<input type='radio' name='nombreUsu' value='".$nombre['nick']."' checked>".$nombre['nick']."<br>";
+    }
+    echo "<input type='submit' value='VER'>";
+    echo "</form>";
   }
 
   public function recuperarObjeto($nombre){

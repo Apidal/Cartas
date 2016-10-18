@@ -58,7 +58,7 @@ class Aplicacion {
   public function login(Usuario $user) {
     $_SESSION['login'] = true;
     $_SESSION['nombre'] = $user->username();
-    $_SESSION['roles'] = $user->roles();
+    $_SESSION['duenoCarta'] = null;
   }
 
   public function logout() {
@@ -66,7 +66,8 @@ class Aplicacion {
     unset($_SESSION["login"]);
     unset($_SESSION["nombre"]);
     unset($_SESSION["roles"]);
-
+    unset($_SESSION["duenoCarta"]);
+    
 
     session_destroy();
     session_start();
