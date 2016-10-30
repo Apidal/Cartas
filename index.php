@@ -8,9 +8,7 @@ $user= new \equipo\usuario();
 <hmtl>
 	<head>
 		<title>Cartas</title>
-				
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
+		<?php require ('includes/headComun.html');?>
 	</head>
 
 <body>
@@ -25,11 +23,10 @@ $user= new \equipo\usuario();
 				<p>Nick: <input type="text" name="nick" value="" required></p>
 				<p>Contraseña: <input type="password" name="pass" value="" required></p>
 
-				<input type="submit" value="Iniciar">
+				<button type="submit" class="ui-btn">INICIAR</button>
+				<button id = "botonPass" class="ui-btn" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button>
 			</form>
 
-			<button type="button" onclick="location.href = 'cambiar_contra.php'" >Contraseña</button>
-					
 		</div> <!-- FIN Contenedor -->
 
 	</body>

@@ -13,16 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Cartas </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>

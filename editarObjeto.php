@@ -13,27 +13,22 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Editar Objeto </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    
-			    $("#botonCerrar").click(function(){
-
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>
 	<?php		
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
-		echo $_SESSION['nombre'];
-		$nombre = $_POST["nomObj"];
-		$ayuda = $obj->recuperarObjeto($nombre);
+		if(isset($_POST["nomObj"])){
+			echo $_SESSION['nombre'];
+			$nombre = $_POST["nomObj"];
+			$ayuda = $obj->recuperarObjeto($nombre);
+		}
+		else
+			header("Location:javascript:history.back(-1)");
+	
 		
 	}
 	else
@@ -47,7 +42,7 @@ $obj = new \equipo\Objeto();
 			<form action="./guardarEditar.php" method="POST">
 				<p>Nombre: <input type="text" name="nombre" value=<?php echo $nombre;?> readonly></p>
 				<p>Ayuda: <input type="text" name="ayuda" value="<?php echo $ayuda;?>" required></p>
-				<input type="submit" value="Guardar">
+				<button type="submit">Guardar</button>
 			</form>
 
 			<button type="button" onclick="location.href = './miCarta.php'" >Cancelar</button>

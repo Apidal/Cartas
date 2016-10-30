@@ -13,8 +13,7 @@ session_destroy();
 	<head>
 		<title> Cambiar contraseña</title>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
+		<?php require ('includes/headComun.html');?>
 
 	</head>
 	<body>
@@ -24,12 +23,12 @@ session_destroy();
 			<form action= "registrarse.php" method="post" enctype='multipart/form-data'>
 				<p>Nick: <input type="text" name="nick" value="" required></p>
 				<p>Contraseña: <input type="password" name="pass" value="" required></p>
-				<p>Repetir ontraseña: <input type="password" name="pass2" value="" required></p>
+				<p>Repetir contraseña: <input type="password" name="pass2" value="" required></p>
 
-				<input type="submit" value="Aceptar">
+				<button class="ui-btn" type="submit">Aceptar</button>
 
 			</form>
-			<button type="button" onclick="location.href = './'" >Cancelar</button>
+			<button class="ui-btn" type="button" onclick="location.href = './'" >Cancelar</button>
 
 		</div> <!-- FIN Contenedor -->
 		

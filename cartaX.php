@@ -13,16 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Carta </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>
@@ -58,9 +50,9 @@ $obj = new \equipo\Objeto();
 					$obj->formularioCartaX($Objetos);
 			?>
 			
-			<button type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
-			<button type="button" onclick="location.href = './cartas.php'" >CARTAS</button>
-			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button class="ui-btn" type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
+			<button class="ui-btn" type="button" onclick="location.href = './cartas.php'" >CARTAS</button>
+			<button class="ui-btn" type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

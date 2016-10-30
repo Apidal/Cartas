@@ -91,7 +91,7 @@ class Objeto {
     foreach ($objetos as $objeto) {
       echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
     }
-    echo "<input type='submit' value='EDITAR'>";
+    echo "<button class='ui-btn' type='submit'>EDITAR</button>";
     echo "</form>";
   }
 
@@ -100,9 +100,9 @@ class Objeto {
     foreach ($objetos as $objeto) {
       echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
     }
-    echo "<input type='submit' name ='COMPRADO' value='COMPRADO'>";
-    echo "<input type='submit' name ='RESERVADO' value='RESERVADO'>";
-    echo "<input type='submit' name ='LIBERAR' value='LIBERAR'>";
+    echo "<button class='ui-btn' type='submit' name ='COMPRADO'>COMPRADO</button>";
+    echo "<button class='ui-btn' type='submit' name ='RESERVADO'>RESERVADO</button>";
+    echo "<button class='ui-btn' type='submit' name ='LIBERAR'>LIBERAR</button>";
     echo "</form>";
   }
 
@@ -111,7 +111,7 @@ class Objeto {
     foreach ($nombres as $nombre) {
       echo "<input type='radio' name='nombreUsu' value='".$nombre['nick']."' checked>".$nombre['nick']."<br>";
     }
-    echo "<input type='submit' value='VER'>";
+    echo "<button class='ui-btn' type='submit'>VER</button>";
     echo "</form>";
   }
 

@@ -12,24 +12,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Principal </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#1").click(function(){  
-					$(location).attr('href',"./miCarta.php");
-			    });
-
-			    $("#2").click(function(){
-					$(location).attr('href',"./cartas.php");
-			    });
-
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>
@@ -45,12 +29,12 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
-			<button id="1">MI CARTA</button>
-			<button id="2">OTRAS CARTAS</button>
-			<p><a href="./miCarta.php"> MI CARTA</a></p>
-			<p><a href="./cartas.php"> CARTAS</a></p>
-		</div> <!-- FIN Contenedor -->
-	
+		
+			<div id="contenedor">
+				<button class="ui-btn" onclick="location.href = './miCarta.php'" >MI CARTA</button>
+				<button class="ui-btn" onclick="location.href = './cartas.php'" >OTRAS CARTAS</button>
+			</div> <!-- FIN Contenedor -->
+
+		
 	</body>
 </html>

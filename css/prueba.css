@@ -1,0 +1,25 @@
+div[data-role=header] {
+	height: 10px;
+}
+
+#botonCerrar{
+	margin-left: 65%;
+}
+
+input {
+    height: 20px;
+}
+
+button[type=button], button[type=submit]{
+	margin-right: 35%;
+	margin-left: 35%;
+	width: 35%;
+}
+
+button[id=botonPass] {
+	margin-right: 32.5%;
+	margin-left: 32.5%;
+	width: 40%;
+}
+
+
