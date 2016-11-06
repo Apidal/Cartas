@@ -41,7 +41,8 @@ $obj = new \equipo\Objeto();
 			<p><h1>Editar objeto</h1></p>
 			<form action="./guardarEditar.php" method="POST">
 				<p>Nombre: <input type="text" name="nombre" value="<?php echo $nombre;?>" readonly></p>
-				<p>Descripción: <input type="text" name="descripcion" value="<?php echo $descripcion;?>" required></p>
+				<label for="descripcion">Descripción</label>
+				<textarea  name="descripcion" id="textarea" required><?php echo $descripcion;?></textarea>
 				<div class='ui-grid-a'>
 					<div class='ui-block-a'><button class="ui-btn ui-icon-check ui-btn-icon-top" type="submit">Guardar</button></div>
 					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'">Cancelar</button></div>
