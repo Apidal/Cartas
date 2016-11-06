@@ -20,11 +20,14 @@ $user= new \equipo\usuario();
 			
 
 			<form action= "logarse.php" method="post" enctype='multipart/form-data'>
-				<p>Nick: <input type="text" name="nick" value="" required></p>
-				<p>Contraseña: <input type="password" name="pass" value="" required></p>
-
-				<button type="submit" class="ui-btn">INICIAR</button>
-				<button id = "botonPass" class="ui-btn" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button>
+				<div data-role="fieldcontain">
+					<p>Nick: <input type="text" name="nick" value="" required></p>
+					<p>Contraseña: <input type="password" name="pass" value="" required></p>
+				</div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><button type="submit" class="ui-btn">INICIAR</button></div>
+					<div class="ui-block-b"><button id = "botonPass" class="ui-btn" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button></div>
+				</div>
 			</form>
 
 		</div> <!-- FIN Contenedor -->

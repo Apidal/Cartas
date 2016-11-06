@@ -1,3 +1,8 @@
+.ui-page{
+	background-color: white;
+	color: bold;
+}
+
 div[data-role=header] {
 	height: 10px;
 }
@@ -8,18 +13,25 @@ div[data-role=header] {
 
 input {
     height: 20px;
+    padding-left: 30%;
+    margin-left: 30%;
 }
 
-button[type=button], button[type=submit]{
-	margin-right: 35%;
-	margin-left: 35%;
-	width: 35%;
+div[data-role=fieldcontain] {
+	width: 80%;
+	margin-left: 10%;
+
 }
 
-button[id=botonPass] {
-	margin-right: 32.5%;
-	margin-left: 32.5%;
-	width: 40%;
+.libre {
+	
 }
 
+.comprado {
+	text-decoration:line-through;
+}
+
+.reservado {
+	color: orange;
+}
 

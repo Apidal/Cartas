@@ -17,13 +17,13 @@ if(isset($_SESSION['nombre'])){
 	}
 	
 
-	if ($_POST['COMPRADO']){ 
+	if (isset($_POST['COMPRADO'])){ 
 		$obj->editarObjeto($duenoCarta, $nombre, 1, 1);
 	}
-	else if ($_POST['RESERVADO']){ 
+	elseif (isset($_POST['RESERVADO'])){
 		$obj->editarObjeto($duenoCarta, $nombre, 0, 1);
 	}
-	else if ($_POST['LIBERAR']){ 
+	else if (isset($_POST['LIBERAR'])){
 		$obj->editarObjeto($duenoCarta, $nombre, 0, 0);
 	}
 	

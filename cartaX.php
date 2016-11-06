@@ -22,10 +22,19 @@ $obj = new \equipo\Objeto();
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
 		echo $_SESSION['nombre'];
-		if(isset($_POST["nombreUsu"])){
+		if(isset($_POST["nombreUsu"]) || isset($_SESSION['duenoCarta'])){
 			$nick = $_SESSION['nombre'];
-			$duenoCarta = $_POST["nombreUsu"];
-			$_SESSION['duenoCarta'] = $duenoCarta;
+
+			if(isset($_POST["nombreUsu"]))
+				$duenoCarta = $_POST["nombreUsu"];
+			else
+				$duenoCarta = $_SESSION['duenoCarta'];
+
+			if($duenoCarta !== $nick)
+				$_SESSION['duenoCarta'] = $duenoCarta;
+			else
+				header("Location:./principal.php");
+			
 		}
 		else{
 			header("Location:./principal.php");

@@ -47,7 +47,7 @@ class Objeto {
    public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick'");
+    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick' group by nick");
     $rs = $conn->query($query);
     $cartas = null;
     if($rs){
@@ -95,10 +95,20 @@ class Objeto {
     echo "</form>";
   }
 
+  private function pintarClase($objeto){
+    if($objeto['comprado'])
+      return "comprado";
+    elseif ($objeto['reservado'])
+      return "reservado";
+    else
+      return "libre";
+    
+  }
+
   public function formularioCartaX($objetos){
     echo "<form action='com_lib_res_obj.php' method='POST'>";
     foreach ($objetos as $objeto) {
-      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
+      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked><span class =".$this->pintarClase($objeto).">".$objeto['nombre']."</span><br>";
     }
     echo "<button class='ui-btn' type='submit' name ='COMPRADO'>COMPRADO</button>";
     echo "<button class='ui-btn' type='submit' name ='RESERVADO'>RESERVADO</button>";
