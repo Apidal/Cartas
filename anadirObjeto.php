@@ -31,15 +31,17 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Añadir objeto</h1></p>
 			<form action="./guardarAnadir.php" method="POST">
 				<p>Nombre: <input type="text" name="nombre" value="" required></p>
-				<p>Ayuda: <input type="text" name="ayuda" value="" required></p>
-				<button type="submit">Añadir</button>
+				<p>Descripción: <input type="text" name="descripcion" value="" required></p>
+				<div class='ui-grid-a'>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">Añadir</button></div>
+					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'" >Cancelar</button></div>
+				</div>
 			</form>
 
-			<button type="button" onclick="location.href = './miCarta.php'" >Cancelar</button>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

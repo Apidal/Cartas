@@ -22,6 +22,7 @@ $obj = new \equipo\Objeto();
 		if(isset($_SESSION['nombre'])){
 			echo $_SESSION['nombre'];
 			unset($_SESSION["duenoCarta"]);
+
 		}
 
 		else
@@ -30,9 +31,9 @@ $obj = new \equipo\Objeto();
 		
 		<!-- === CONTENIDO === -->
 		
-			<div id="contenedor">
-				<button class="ui-btn" onclick="location.href = './miCarta.php'" >MI CARTA</button>
-				<button class="ui-btn" onclick="location.href = './cartas.php'" >OTRAS CARTAS</button>
+			<div data-role="fieldcontain">
+				<button class="ui-btn ui-icon-bullets ui-btn-icon-top" onclick="location.href = './miCarta.php'" >MI CARTA</button>
+				<button class="ui-btn ui-icon-bars ui-btn-icon-top" onclick="location.href = './cartas.php'" >OTRAS CARTAS</button>
 			</div> <!-- FIN Contenedor -->
 
 		

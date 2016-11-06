@@ -7,8 +7,8 @@ div[data-role=header] {
 	height: 10px;
 }
 
-#botonCerrar{
-	margin-left: 65%;
+.ui-btn-right{
+	right: .4em;
 }
 
 input {

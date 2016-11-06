@@ -31,10 +31,10 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Mi carta</h1></p>
 			<?php
-				$misObjetos = $obj->recuperarCarta($nick);
+				$misObjetos = $obj->recuperarCartaSinExtra($nick);
 				if(empty($misObjetos)){
 			?>	
 					<p><h2>Todavía no has añadido ningún objeto</h2></p>
@@ -43,9 +43,7 @@ $obj = new \equipo\Objeto();
 				else
 					$obj->formularioMiCarta($misObjetos);
 			?>
-			
-			<button  type="button" onclick="location.href = './anadirObjeto.php'" >AÑADIR</button>
-			<button  type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button  type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

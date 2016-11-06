@@ -23,10 +23,12 @@ $user= new \equipo\usuario();
 				<div data-role="fieldcontain">
 					<p>Nick: <input type="text" name="nick" value="" required></p>
 					<p>Contraseña: <input type="password" name="pass" value="" required></p>
-				</div>
-				<div class="ui-grid-a">
-					<div class="ui-block-a"><button type="submit" class="ui-btn">INICIAR</button></div>
-					<div class="ui-block-b"><button id = "botonPass" class="ui-btn" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button></div>
+				
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><button type="submit" class="ui-btn ui-icon-check ui-btn-icon-top">INICIAR</button></div>
+						<div class="ui-block-b"><button id = "botonPass" class="ui-btn ui-icon-edit ui-btn-icon-top" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button></div>
+					
+					</div>
 				</div>
 			</form>
 

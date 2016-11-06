@@ -24,7 +24,7 @@ $obj = new \equipo\Objeto();
 		if(isset($_POST["nomObj"])){
 			echo $_SESSION['nombre'];
 			$nombre = $_POST["nomObj"];
-			$ayuda = $obj->recuperarObjeto($nombre);
+			$descripcion = $obj->recuperarObjeto($nombre);
 		}
 		else
 			header("Location:javascript:history.back(-1)");
@@ -37,15 +37,18 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role = "fieldcontain">
 			<p><h1>Editar objeto</h1></p>
 			<form action="./guardarEditar.php" method="POST">
-				<p>Nombre: <input type="text" name="nombre" value=<?php echo $nombre;?> readonly></p>
-				<p>Ayuda: <input type="text" name="ayuda" value="<?php echo $ayuda;?>" required></p>
-				<button type="submit">Guardar</button>
+				<p>Nombre: <input type="text" name="nombre" value="<?php echo $nombre;?>" readonly></p>
+				<p>Descripción: <input type="text" name="descripcion" value="<?php echo $descripcion;?>" required></p>
+				<div class='ui-grid-a'>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-check ui-btn-icon-top" type="submit">Guardar</button></div>
+					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'">Cancelar</button></div>
+				</div>
 			</form>
 
-			<button type="button" onclick="location.href = './miCarta.php'" >Cancelar</button>
+			
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

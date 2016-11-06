@@ -8,7 +8,7 @@ class Objeto {
 
   private $nombre;
 
-  private $ayuda;
+  private $descripcion;
 
   private $comprado;
 
@@ -23,10 +23,10 @@ class Objeto {
 
   }
 
-  public static function recuperarCarta($nick){
+  public static function recuperarCartaSinExtra($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();  
-    $query = sprintf("SELECT * FROM objetos where nick = '$nick'");
+    $query = sprintf("SELECT * FROM objetos where nick = '$nick' and esExtra = 0");
     $rs = $conn->query($query);
     $objetos = null;
     if($rs){
@@ -65,10 +65,10 @@ class Objeto {
 
   }
 
-  public function anadirObjeto($nick, $nombre, $ayuda, $esExtra){
+  public function anadirObjeto($nick, $nombre, $descripcion, $esExtra){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$ayuda', 0, 0, $esExtra)");
+    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$descripcion', 0, 0, $esExtra)");
     $rs = $conn->query($query);
   }
 
@@ -79,19 +79,26 @@ class Objeto {
     $rs = $conn->query($query);
   }
 
-   public function editarObjetoPropio($nick, $nombre, $ayuda){
+   public function editarObjetoPropio($nick, $nombre, $descripcion){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE objetos SET ayuda = '$ayuda' WHERE nick='$nick' AND nombre = '$nombre'");
+    $query = sprintf("UPDATE objetos SET descripcion = '$descripcion' WHERE nick='$nick' AND nombre = '$nombre'");
     $rs = $conn->query($query);
   }
 
   public function formularioMiCarta($objetos){
     echo "<form action='editarObjeto.php' method='POST'>";
+    echo "<fieldset data-role='controlgroup'>";
     foreach ($objetos as $objeto) {
-      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked>".$objeto['nombre']."<br>";
+      echo "<label for='".$objeto['nombre']."'>".$objeto['nombre']."</label>";
+      echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
     }
-    echo "<button class='ui-btn' type='submit'>EDITAR</button>";
+    echo "</fieldset>";
+
+    echo "<div class='ui-grid-a'>";
+    echo "<div class='ui-block-a'><button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirObjeto.php'\" >AÑADIR</button></div>";
+    echo "<div class='ui-block-b'><button class='ui-btn ui-icon-edit ui-btn-icon-top' type='submit'>EDITAR</button></div>";
+    echo "</div>";
     echo "</form>";
   }
 
@@ -110,28 +117,31 @@ class Objeto {
     foreach ($objetos as $objeto) {
       echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked><span class =".$this->pintarClase($objeto).">".$objeto['nombre']."</span><br>";
     }
-    echo "<button class='ui-btn' type='submit' name ='COMPRADO'>COMPRADO</button>";
-    echo "<button class='ui-btn' type='submit' name ='RESERVADO'>RESERVADO</button>";
-    echo "<button class='ui-btn' type='submit' name ='LIBERAR'>LIBERAR</button>";
+    echo "<div class='ui-grid-a'>";
+    echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
+    echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
+    echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
+    echo "</div>";
     echo "</form>";
   }
 
   public function pintarCartas($nombres){
     echo "<form action='cartaX.php' method='POST'>";
     foreach ($nombres as $nombre) {
-      echo "<input type='radio' name='nombreUsu' value='".$nombre['nick']."' checked>".$nombre['nick']."<br>";
+      echo "<label for='".$nombre['nick']."'>".$nombre['nick']."</label>";
+      echo "<input type='radio' name='nombreUsu' id='".$nombre['nick']."'' value='".$nombre['nick']."' checked>";
     }
-    echo "<button class='ui-btn' type='submit'>VER</button>";
+    echo "<button class='ui-btn ui-icon-eye ui-btn-icon-top' type='submit'>VER</button>";
     echo "</form>";
   }
 
   public function recuperarObjeto($nombre){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT ayuda FROM objetos where nombre = '$nombre'");
+    $query = sprintf("SELECT descripcion FROM objetos where nombre = '$nombre'");
     $rs = $conn->query($query);
     $fila = $rs->fetch_assoc();
-    return $fila['ayuda'];
+    return $fila['descripcion'];
   }
 
 

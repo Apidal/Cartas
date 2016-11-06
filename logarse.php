@@ -14,6 +14,9 @@ $pass = $_POST["pass"];
 if($user->login($nick,$pass)){
 	$_SESSION['nombre'] = $nick;
 	header("Location:principal.php");
+	$page = $_SERVER['principal.php'];
+	$sec = "10";
+	header("Refresh: 0; url=$page");
 }
 else
 	header("Location:./");

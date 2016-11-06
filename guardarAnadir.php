@@ -9,9 +9,9 @@ $obj = new \equipo\Objeto();
 if(isset($_SESSION['nombre'])){
 	$nick = $_SESSION['nombre'];
 	$nombre = $_POST["nombre"];
-	$ayuda = $_POST["ayuda"];
+	$descripcion = $_POST["descripcion"];
 	
-	$obj->anadirObjeto($nick, $nombre, $ayuda, 0);
+	$obj->anadirObjeto($nick, $nombre, $descripcion, 0);
 	header("Location:./miCarta.php");
 }
 else

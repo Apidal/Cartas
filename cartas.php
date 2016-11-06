@@ -31,7 +31,7 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Cartas</h1></p>
 			<?php
 				$cartas = $obj->cartasOtros($nick);
@@ -44,7 +44,7 @@ $obj = new \equipo\Objeto();
 					$obj->pintarCartas($cartas);
 			?>
 			
-			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	
