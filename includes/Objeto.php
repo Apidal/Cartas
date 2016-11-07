@@ -112,7 +112,7 @@ class Objeto {
     
   }
 
- /* public function formularioCartaX($objetos){
+  public function formularioCartaX($objetos){
     echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
     foreach ($objetos as $objeto) {
       echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
@@ -124,7 +124,7 @@ class Objeto {
     echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
     echo "</div>";
     echo "</form>";
-  }*/
+  }
 
   public function pintarCartas($nombres){
     echo "<form action='cartaX.php' data-ajax='false' method='POST'>";
