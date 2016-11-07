@@ -49,14 +49,34 @@ $obj = new \equipo\Objeto();
 		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Carta de <?php echo $duenoCarta;?></h1></p>
 			<?php
-				$Objetos = $obj->recuperarCartaSinExtra($duenoCarta);
-				if(empty($Objetos)){
+				$objetos = $obj->recuperarCartaSinExtra($duenoCarta);
+				if(empty($objetos)){
 			?>	
 					<p><h2>Error al recuperar la carta</h2></p>
 			<?php
 				}
-				else
-					$obj->formularioCartaX($Objetos);
+				else{
+			?>		
+						<form action='com_lib_res_obj.php' data-ajax="false" method='post'>
+			<?php 
+						foreach ($objetos as $objeto) {
+			?>		
+							<label for="<?php echo $objeto['nombre'];?>" class ='<?php echo $obj->pintarClase($objeto);?>'><?php echo $objeto['nombre'];?></label>
+				      		<input type='radio' name='nomObj' id='<?php echo $objeto['nombre'];?>' value='<?php echo $objeto['nombre'];?>' checked>
+			<?php 		
+						} 
+			?>
+				    <div class='ui-grid-a'>
+				    <div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>
+				    <div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>
+				    <button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>
+				    </div>
+				    </form>
+
+
+			<?php
+				}//$obj->formularioCartaX($Objetos);
+				
 			?>
 			
 			<button class="ui-btn ui-icon-plus ui-btn-icon-top" type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>

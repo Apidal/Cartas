@@ -19,7 +19,7 @@ $user= new \equipo\usuario();
 
 			
 
-			<form action= "logarse.php" method="post" enctype='multipart/form-data'>
+			<form action= "logarse.php" method="post" data-ajax="false" enctype='multipart/form-data'>
 				<div data-role="fieldcontain">
 					<p>Nick: <input type="text" name="nick" value="" required></p>
 					<p>Contraseña: <input type="password" name="pass" value="" required></p>

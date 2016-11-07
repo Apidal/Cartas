@@ -87,7 +87,7 @@ class Objeto {
   }
 
   public function formularioMiCarta($objetos){
-    echo "<form action='editarObjeto.php' method='POST'>";
+    echo "<form action='editarObjeto.php' data-ajax='false' method='POST'>";
     echo "<fieldset data-role='controlgroup'>";
     foreach ($objetos as $objeto) {
       echo "<label for='".$objeto['nombre']."'>".$objeto['nombre']."</label>";
@@ -102,7 +102,7 @@ class Objeto {
     echo "</form>";
   }
 
-  private function pintarClase($objeto){
+  public function pintarClase($objeto){
     if($objeto['comprado'])
       return "comprado";
     elseif ($objeto['reservado'])
@@ -112,10 +112,11 @@ class Objeto {
     
   }
 
-  public function formularioCartaX($objetos){
-    echo "<form action='com_lib_res_obj.php' method='POST'>";
+ /* public function formularioCartaX($objetos){
+    echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
     foreach ($objetos as $objeto) {
-      echo "<input type='radio' name='nomObj' value='".$objeto['nombre']."' checked><span class =".$this->pintarClase($objeto).">".$objeto['nombre']."</span><br>";
+      echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
+      echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
     }
     echo "<div class='ui-grid-a'>";
     echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
@@ -123,10 +124,10 @@ class Objeto {
     echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
     echo "</div>";
     echo "</form>";
-  }
+  }*/
 
   public function pintarCartas($nombres){
-    echo "<form action='cartaX.php' method='POST'>";
+    echo "<form action='cartaX.php' data-ajax='false' method='POST'>";
     foreach ($nombres as $nombre) {
       echo "<label for='".$nombre['nick']."'>".$nombre['nick']."</label>";
       echo "<input type='radio' name='nombreUsu' id='".$nombre['nick']."'' value='".$nombre['nick']."' checked>";

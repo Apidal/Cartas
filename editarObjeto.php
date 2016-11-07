@@ -39,7 +39,7 @@ $obj = new \equipo\Objeto();
 		<!-- === CONTENIDO === -->
 		<div id="contenedor" data-role = "fieldcontain">
 			<p><h1>Editar objeto</h1></p>
-			<form action="./guardarEditar.php" method="POST">
+			<form action="./guardarEditar.php" data-ajax="false" method="POST">
 				<p>Nombre: <input type="text" name="nombre" value="<?php echo $nombre;?>" readonly></p>
 				<label for="descripcion">Descripción</label>
 				<textarea  name="descripcion" id="textarea" required><?php echo $descripcion;?></textarea>

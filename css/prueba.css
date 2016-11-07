@@ -23,15 +23,13 @@ div[data-role=fieldcontain] {
 
 }
 
-.libre {
-	
-}
+
 
 .comprado {
-	text-decoration:line-through;
+	text-decoration:line-through !important;
 }
 
 .reservado {
-	color: orange;
+	color: orange !important;
 }
 

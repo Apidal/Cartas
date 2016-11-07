@@ -33,7 +33,7 @@ $obj = new \equipo\Objeto();
 		<!-- === CONTENIDO === -->
 		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Añadir objeto</h1></p>
-			<form action="./guardarAnadir.php" method="POST">
+			<form action="./guardarAnadir.php" data-ajax="false" method="POST">
 				<p>Nombre: <input type="text" name="nombre" value="" required></p>
 				<label for="descripcion">Descripción</label>
 				<textarea  name="descripcion" id="textarea" required></textarea>
