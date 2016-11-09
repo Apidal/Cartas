@@ -41,9 +41,14 @@ div[data-role=fieldcontain] {
 }
 
 .separacionHorizontal {
-	margin-top: 100px;
+	margin-top: 15%;
 }
 
 label{
 	background-color: #D8FBFF !important;
+}
+
+#botonMicartaPrincipal {
+	margin-top: 30%;
+	margin-bottom: 20%;
 }

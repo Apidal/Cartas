@@ -60,13 +60,6 @@ $obj = new \equipo\Objeto();
 					$obj->formularioCartaX($objetos, $objetosEx);
 				}
 			?>	
-					
-			
-			<button class="ui-btn ui-icon-plus ui-btn-icon-top" type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
-			<div class='ui-grid-a'>
-				<div class='ui-block-a'><button class="ui-btn ui-icon-bars ui-btn-icon-top" type="button" onclick="location.href = './cartas.php'" >CARTAS</button></div>
-				<div class='ui-block-b'><button class="ui-btn ui-icon-home ui-btn-icon-top" type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button></div>
-			</div>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

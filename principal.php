@@ -32,7 +32,7 @@ $obj = new \equipo\Objeto();
 		<!-- === CONTENIDO === -->
 		
 			<div data-role="fieldcontain">
-				<button class="ui-btn ui-icon-bullets ui-btn-icon-top" onclick="location.href = './miCarta.php'" >MI CARTA</button>
+				<button id= "botonMicartaPrincipal" class="ui-btn ui-icon-bullets ui-btn-icon-top" onclick="location.href = './miCarta.php'" >MI CARTA</button>
 				<button class="ui-btn ui-icon-bars ui-btn-icon-top" onclick="location.href = './cartas.php'" >OTRAS CARTAS</button>
 			</div> <!-- FIN Contenedor -->
 

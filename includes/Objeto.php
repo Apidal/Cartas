@@ -116,6 +116,8 @@ class Objeto {
     }
     echo "</fieldset>";
 
+    echo "<div class = 'separacionHorizontal'></div>";
+
     echo "<div class='ui-grid-a'>";
     echo "<div class='ui-block-a'><button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirObjeto.php'\" >AÑADIR</button></div>";
     echo "<div class='ui-block-b'><button class='ui-btn ui-icon-edit ui-btn-icon-top' type='submit'>EDITAR</button></div>";
@@ -130,33 +132,39 @@ class Objeto {
       return "reservado";
     else
       return "libre";
-    
   }
 
   public function formularioCartaX($objetos, $objetosEx){
     echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
-    echo "<fieldset data-role='controlgroup'>";
-    foreach ($objetos as $objeto) {
-      echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
-      echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
-    }
-    if(!empty($objetosEx)){
+      echo "<fieldset data-role='controlgroup'>";
+        foreach ($objetos as $objeto) {
+          echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
+          echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
+        }
+        if(!empty($objetosEx)){
+          echo "<div class = 'separacionHorizontal'></div>";
+
+          echo "<h2>Extras para ".$objeto['nick']." </h2>";
+          foreach ($objetosEx as $objeto) {
+            echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
+            echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."'>";
+          }
+
+        }
+      echo "</fieldset>";
+
       echo "<div class = 'separacionHorizontal'></div>";
 
-      echo "<h2>Extras para ".$objeto['nick']." </h2>";
-      foreach ($objetosEx as $objeto) {
-        echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
-        echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."'>";
-      }
-
-    }
-    echo "</fieldset>";
-
-    echo "<div class='ui-grid-a'>";
-    echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
-    echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
-    echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
-    echo "</div>";
+      echo "<div class='ui-grid-a'>";
+        echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
+        echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
+        echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
+        echo "<button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirExtra.php'\" >AÑADIR EXTRA</button>";
+        echo "<div class='ui-grid-a'>";
+          echo "<div class='ui-block-a'><button class='ui-btn ui-icon-bars ui-btn-icon-top' type='button' onclick=\"location.href = './cartas.php'\" >CARTAS</button></div>";
+          echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './Principal.php'\" >PRINCIPAL</button></div>";
+        echo "</div>";
+      echo "</div>";
     echo "</form>";
   }
 
@@ -168,6 +176,9 @@ class Objeto {
       echo "<input type='radio' name='nombreUsu' id='".$nombre['nick']."'' value='".$nombre['nick']."' checked>";
     }
     echo "</fieldset>";
+
+    echo "<div class = 'separacionHorizontal'></div>";
+    
     echo "<button class='ui-btn ui-icon-eye ui-btn-icon-top' type='submit'>VER</button>";
     echo "</form>";
   }
