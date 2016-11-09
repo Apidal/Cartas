@@ -38,6 +38,8 @@ $obj = new \equipo\Objeto();
 				if(empty($misObjetos)){
 			?>	
 					<p><h2>Todavía no has añadido ningún objeto</h2></p>
+					<div class = 'separacionHorizontal'></div>
+					<button  type="button" class='ui-btn ui-icon-plus ui-btn-icon-top' onclick="location.href = './anadirObjeto.php'" >AÑADIR</button>
 			<?php
 				}
 				else

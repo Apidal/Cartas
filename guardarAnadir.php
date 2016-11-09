@@ -11,7 +11,8 @@ if(isset($_SESSION['nombre'])){
 	$nombre = $_POST["nombre"];
 	$descripcion = $_POST["descripcion"];
 	
-	$obj->anadirObjeto($nick, $nombre, $descripcion, 0);
+	if($nombre !== "" && $descripcion !== "")
+		$obj->anadirObjeto($nick, $nombre, $descripcion, 0);
 	header("Location:./miCarta.php");
 }
 else

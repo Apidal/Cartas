@@ -10,8 +10,8 @@ if(isset($_SESSION['nombre']) && isset($_SESSION['duenoCarta'])){
 	$nick = $_SESSION['duenoCarta'];
 	$nombre = $_POST["nombre"];
 	$descripcion = $_POST["descripcion"];
-	
-	$obj->anadirObjeto($nick, $nombre, $descripcion, 1);
+	if($nombre !== "" && $descripcion !== "")
+		$obj->anadirObjeto($nick, $nombre, $descripcion, 1);
 	header("Location:./cartaX.php");
 }
 else

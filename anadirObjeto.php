@@ -35,7 +35,7 @@ $obj = new \equipo\Objeto();
 			<p><h1>Añadir objeto</h1></p>
 			<form action="./guardarAnadir.php" data-ajax="false" method="POST">
 				<p>Nombre:<input type="text" name="nombre" value="" required></p>
-				<p for="descripcion">Descripción:</label>
+				<p for="descripcion">Descripción:</p>
 				<textarea  name="descripcion" id="textarea" required></textarea>
 				<div class='ui-grid-a'>
 					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">Añadir</button></div>
