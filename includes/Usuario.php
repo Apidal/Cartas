@@ -65,7 +65,6 @@ class Usuario {
 
 		$app = App::getSingleton();
 		$conn = $app->conexionBd();
-    $nick = ucwords(strtolower($nick));
     $password = sha1($password);
 		$query = sprintf("INSERT INTO usuario (nick,password) VALUES ('$nick','$password')");
 		$rs = $conn->query($query);

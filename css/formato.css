@@ -8,6 +8,7 @@ div[data-role=header] {
 
 .ui-btn-right{
 	right: .4em;
+	background-color: white !important;
 }
 
 p {
@@ -44,11 +45,15 @@ div[data-role=fieldcontain] {
 	margin-top: 15%;
 }
 
-label{
+label, a{
 	background-color: #D8FBFF !important;
 }
 
 #botonMicartaPrincipal {
 	margin-top: 30%;
 	margin-bottom: 20%;
+}
+
+#izquierda {
+	margin-right: 40%;
 }

@@ -21,7 +21,6 @@ $obj = new \equipo\Objeto();
 	<?php		
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
-		echo $_SESSION['nombre'];
 		if(isset($_POST["nombreUsu"]) || isset($_SESSION['duenoCarta'])){
 			$nick = $_SESSION['nombre'];
 
@@ -54,6 +53,9 @@ $obj = new \equipo\Objeto();
 				if(empty($objetos)){
 			?>	
 					<p><h2>Error al recuperar la carta</h2></p>
+					<div class = 'separacionHorizontal'></div>
+					<button type="button" class='ui-btn ui-icon-bars ui-btn-icon-top' onclick="location.href = './cartas.php'" >CARTAS</button>
+					<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			<?php
 				}
 				else{

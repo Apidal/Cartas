@@ -19,12 +19,8 @@ $obj = new \equipo\Objeto();
 <body>
 	<?php		
 		require ('views/cerrarSesion.php');
-		if(isset($_SESSION['nombre'])){
-			echo $_SESSION['nombre'];
+		if(isset($_SESSION['nombre']))
 			unset($_SESSION["duenoCarta"]);
-
-		}
-
 		else
 			header("Location:./");
 	?>

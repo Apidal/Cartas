@@ -8,9 +8,8 @@ $usuario= new \equipo\Usuario();
 
 //echo var_dump($urlseparada);
 $pass1 = "";
-$nick = $_POST["nick"];
+$nick = ucwords(strtolower($_POST["nick"]));
 $pass1 = $_POST["pass"];
-
 $pass2 = $_POST["pass2"];
 
 
@@ -20,7 +19,7 @@ if(!$usuario->compruebaSimilPass($pass1,$pass2)){
 	header("Location:./cambiar_contra.php");
 	
 }
-else if($usuario->existeUsuario($nick)){
+elseif($usuario->existeUsuario($nick)){
 	$usuario->cambiarPass($nick,$pass1);
 	header("Location:./");
 }

@@ -21,7 +21,6 @@ $obj = new \equipo\Objeto();
 	<?php		
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
-		echo $_SESSION['nombre'];
 		unset($_SESSION["duenoCarta"]);
 		$nick = $_SESSION['nombre'];
 	}

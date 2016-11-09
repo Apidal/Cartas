@@ -12,7 +12,10 @@ $user= new \equipo\usuario();
 	</head>
 
 <body>
-	
+	<?php
+		if(isset($_SESSION['nombre']))
+			header("Location:./principal.php");
+	?>
 	
 		<!-- === CONTENIDO === -->
 		<div id="contenedor">

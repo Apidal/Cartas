@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Añadir objeto </title>
+		<title> Añadir objeto extra</title>
 	
 		<?php require ('includes/headComun.html');?>
 		
@@ -22,8 +22,6 @@ $obj = new \equipo\Objeto();
 	<?php		
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre']) && isset($_SESSION['duenoCarta'])){
-		echo $_SESSION['nombre'];
-		echo $_SESSION['duenoCarta'];
 		$duenoCarta = $_SESSION['duenoCarta'];
 	}
 	else

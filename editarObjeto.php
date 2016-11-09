@@ -22,7 +22,6 @@ $obj = new \equipo\Objeto();
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
 		if(isset($_POST["nomObj"])){
-			echo $_SESSION['nombre'];
 			$nombre = $_POST["nomObj"];
 			$descripcion = $obj->recuperarObjeto($nombre);
 		}

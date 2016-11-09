@@ -68,7 +68,7 @@ class Objeto {
    public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick' group by nick");
+    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick' AND esExtra = 0 group by nick");
     $rs = $conn->query($query);
     $cartas = null;
     if($rs){
@@ -138,16 +138,36 @@ class Objeto {
     echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
       echo "<fieldset data-role='controlgroup'>";
         foreach ($objetos as $objeto) {
+          //echo "<div id ='izquierda'>";
           echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
           echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
+          //echo "</div>";
+          $idObjeto = str_replace(' ', '_', $objeto['nombre']);
+          echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='origin'> f</a>";
+          echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
+            echo "<h3>Descripción de ".$objeto['nombre']."</h3>";
+            echo "----------------------------------";
+            echo "</br></br>";
+            echo $objeto['descripcion'];
+          echo "</div>";
         }
         if(!empty($objetosEx)){
           echo "<div class = 'separacionHorizontal'></div>";
 
           echo "<h2>Extras para ".$objeto['nick']." </h2>";
-          foreach ($objetosEx as $objeto) {
-            echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
-            echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."'>";
+          foreach ($objetosEx as $objetoEx) {
+            //echo "<div id ='izquierda'>";
+            echo "<label for='".$objetoEx['nombre']."' class =".$this->pintarClase($objetoEx).">".$objetoEx['nombre']."</label>";
+            echo "<input type='radio' name='nomObj' id='".$objetoEx['nombre']."' value='".$objetoEx['nombre']."'>";
+            //echo "</div>";
+            $idObjeto = str_replace(' ', '_', $objetoEx['nombre']);
+            echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon'> f</a>";
+            echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
+              echo "<h3>Descripción de ".$objetoEx['nombre']."</h3>";
+              echo "----------------------------------";
+              echo "</br></br>";
+              echo $objetoEx['descripcion'];
+            echo "</div>";
           }
 
         }
@@ -160,6 +180,7 @@ class Objeto {
         echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
         echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
         echo "<button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirExtra.php'\" >AÑADIR EXTRA</button>";
+        echo "<button class='ui-btn ui-icon-delete ui-btn-icon-top' type='button' onclick=\"location.href = ''\" >BORRAR EXTRA</button>";
         echo "<div class='ui-grid-a'>";
           echo "<div class='ui-block-a'><button class='ui-btn ui-icon-bars ui-btn-icon-top' type='button' onclick=\"location.href = './cartas.php'\" >CARTAS</button></div>";
           echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './Principal.php'\" >PRINCIPAL</button></div>";
@@ -190,6 +211,14 @@ class Objeto {
     $rs = $conn->query($query);
     $fila = $rs->fetch_assoc();
     return $fila['descripcion'];
+  }
+
+  public function borrarExtra($nombre){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("DELETE FROM objetos where nombre = '$nombre' AND esExtra = 1");
+    $rs = $conn->query($query);
+    $fila = $rs->fetch_assoc();
   }
 
 
