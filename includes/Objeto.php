@@ -143,7 +143,7 @@ class Objeto {
           echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
           //echo "</div>";
           $idObjeto = str_replace(' ', '_', $objeto['nombre']);
-          echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='origin'> f</a>";
+          echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='window' data-transition='flip'> f</a>";
           echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
             echo "<h3>Descripción de ".$objeto['nombre']."</h3>";
             echo "----------------------------------";
@@ -161,7 +161,7 @@ class Objeto {
             echo "<input type='radio' name='nomObj' id='".$objetoEx['nombre']."' value='".$objetoEx['nombre']."'>";
             //echo "</div>";
             $idObjeto = str_replace(' ', '_', $objetoEx['nombre']);
-            echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon'> f</a>";
+            echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='window' data-transition='flip'> f</a>";
             echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
               echo "<h3>Descripción de ".$objetoEx['nombre']."</h3>";
               echo "----------------------------------";
