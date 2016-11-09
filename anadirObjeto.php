@@ -13,17 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Añadir objeto </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    
-			    $("#botonCerrar").click(function(){
-
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
+		<?php require ('includes/headComun.html');?>
+		
 		
 	</head>
 	
@@ -40,15 +31,18 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Añadir objeto</h1></p>
-			<form action="./guardarAnadir.php" method="POST">
-				<p>Nombre: <input type="text" name="nombre" value="" required></p>
-				<p>Ayuda: <input type="text" name="ayuda" value="" required></p>
-				<input type="submit" value="Añadir">
+			<form action="./guardarAnadir.php" data-ajax="false" method="POST">
+				<p>Nombre:<input type="text" name="nombre" value="" required></p>
+				<p for="descripcion">Descripción:</label>
+				<textarea  name="descripcion" id="textarea" required></textarea>
+				<div class='ui-grid-a'>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">Añadir</button></div>
+					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'" >Cancelar</button></div>
+				</div>
 			</form>
 
-			<button type="button" onclick="location.href = './miCarta.php'" >Cancelar</button>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>

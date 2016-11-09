@@ -8,9 +8,7 @@ $user= new \equipo\usuario();
 <hmtl>
 	<head>
 		<title>Cartas</title>
-				
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
+		<?php require ('includes/headComun.html');?>
 	</head>
 
 <body>
@@ -21,15 +19,19 @@ $user= new \equipo\usuario();
 
 			
 
-			<form action= "logarse.php" method="post" enctype='multipart/form-data'>
-				<p>Nick: <input type="text" name="nick" value="" required></p>
-				<p>Contraseña: <input type="password" name="pass" value="" required></p>
-
-				<input type="submit" value="Iniciar">
+			<form action= "logarse.php" method="post" data-ajax="false" enctype='multipart/form-data'>
+				<div data-role="fieldcontain">
+					<p>Nick: <input type="text" name="nick" value="" required></p>
+					<p>Contraseña: <input type="password" name="pass" value="" required></p>
+				
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><button type="submit" class="ui-btn ui-icon-check ui-btn-icon-top">INICIAR</button></div>
+						<div class="ui-block-b"><button id = "botonPass" class="ui-btn ui-icon-edit ui-btn-icon-top" type="button" onclick="location.href = 'cambiar_contra.php'">CONTRASEÑA</button></div>
+					
+					</div>
+				</div>
 			</form>
 
-			<button type="button" onclick="location.href = 'cambiar_contra.php'" >Contraseña</button>
-					
 		</div> <!-- FIN Contenedor -->
 
 	</body>

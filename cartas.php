@@ -13,16 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Cartas </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>
@@ -39,7 +31,7 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Cartas</h1></p>
 			<?php
 				$cartas = $obj->cartasOtros($nick);
@@ -52,7 +44,7 @@ $obj = new \equipo\Objeto();
 					$obj->pintarCartas($cartas);
 			?>
 			
-			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

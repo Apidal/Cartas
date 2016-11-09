@@ -13,16 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Mi Carta </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+			
 	</head>
 	
 <body>
@@ -39,10 +31,10 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Mi carta</h1></p>
 			<?php
-				$misObjetos = $obj->recuperarCarta($nick);
+				$misObjetos = $obj->recuperarCartaSinExtra($nick);
 				if(empty($misObjetos)){
 			?>	
 					<p><h2>Todavía no has añadido ningún objeto</h2></p>
@@ -51,9 +43,7 @@ $obj = new \equipo\Objeto();
 				else
 					$obj->formularioMiCarta($misObjetos);
 			?>
-			
-			<button type="button" onclick="location.href = './anadirObjeto.php'" >AÑADIR</button>
-			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button  type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

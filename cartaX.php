@@ -13,16 +13,8 @@ $obj = new \equipo\Objeto();
 	<head>
 		<title> Carta </title>
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset= utf-8"/>
-		<script>
-			$(document).ready(function(){
-			    $("#botonCerrar").click(function(){
-					$(location).attr('href',"./cerrarSesion.php");
-			    });
-			});
-		</script>
-		
+		<?php require ('includes/headComun.html');?>
+				
 	</head>
 	
 <body>
@@ -30,10 +22,19 @@ $obj = new \equipo\Objeto();
 	require ('views/cerrarSesion.php');
 	if(isset($_SESSION['nombre'])){
 		echo $_SESSION['nombre'];
-		if(isset($_POST["nombreUsu"])){
+		if(isset($_POST["nombreUsu"]) || isset($_SESSION['duenoCarta'])){
 			$nick = $_SESSION['nombre'];
-			$duenoCarta = $_POST["nombreUsu"];
-			$_SESSION['duenoCarta'] = $duenoCarta;
+
+			if(isset($_POST["nombreUsu"]))
+				$duenoCarta = $_POST["nombreUsu"];
+			else
+				$duenoCarta = $_SESSION['duenoCarta'];
+
+			if($duenoCarta !== $nick)
+				$_SESSION['duenoCarta'] = $duenoCarta;
+			else
+				header("Location:./principal.php");
+			
 		}
 		else{
 			header("Location:./principal.php");
@@ -45,23 +46,27 @@ $obj = new \equipo\Objeto();
 	?>
 		
 		<!-- === CONTENIDO === -->
-		<div id="contenedor">
+		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Carta de <?php echo $duenoCarta;?></h1></p>
 			<?php
-				$Objetos = $obj->recuperarCarta($duenoCarta);
-				if(empty($Objetos)){
+				$objetos = $obj->recuperarCartaSinExtra($duenoCarta);
+				$objetosEx = $obj->recuperarExtras($duenoCarta);
+				if(empty($objetos)){
 			?>	
 					<p><h2>Error al recuperar la carta</h2></p>
 			<?php
 				}
-				else
-					$obj->formularioCartaX($Objetos);
-			?>
+				else{
+					$obj->formularioCartaX($objetos, $objetosEx);
+				}
+			?>	
+					
 			
-			<button type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
-			<button type="button" onclick="location.href = './cartas.php'" >CARTAS</button>
-			<button type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button>
-			
+			<button class="ui-btn ui-icon-plus ui-btn-icon-top" type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
+			<div class='ui-grid-a'>
+				<div class='ui-block-a'><button class="ui-btn ui-icon-bars ui-btn-icon-top" type="button" onclick="location.href = './cartas.php'" >CARTAS</button></div>
+				<div class='ui-block-b'><button class="ui-btn ui-icon-home ui-btn-icon-top" type="button" onclick="location.href = './Principal.php'" >PRINCIPAL</button></div>
+			</div>
 		</div> <!-- FIN Contenedor -->
 	
 	</body>
