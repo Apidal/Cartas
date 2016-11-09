@@ -1,6 +1,5 @@
-.ui-page{
-	background-color: white;
-	color: bold;
+.ui-page { 
+    background-color: #05A6B7;
 }
 
 div[data-role=header] {
@@ -11,10 +10,20 @@ div[data-role=header] {
 	right: .4em;
 }
 
+p {
+	font-size: 120%;
+	font-style: oblique;
+}
+
+textarea {
+	font-size: 100%;
+}
+
 input {
     height: 20px;
     padding-left: 30%;
     margin-left: 30%;
+    font-size: 85%
 }
 
 div[data-role=fieldcontain] {
@@ -22,8 +31,6 @@ div[data-role=fieldcontain] {
 	margin-left: 10%;
 
 }
-
-
 
 .comprado {
 	text-decoration:line-through !important;
@@ -33,3 +40,10 @@ div[data-role=fieldcontain] {
 	color: orange !important;
 }
 
+.separacionHorizontal {
+	margin-top: 100px;
+}
+
+label{
+	background-color: #D8FBFF !important;
+}

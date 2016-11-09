@@ -4,7 +4,7 @@
 ?>
 		
 		<div data-role="header" class="ui-content">
-	    	<a  id= "botonCerrar" class="ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-btn-inline">Cerrar sessión</a>
+	    	<a  id= "botonCerrar" class="ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-btn-inline">Cerrar sesión</a>
 	  	</div>
 	
 		<script>

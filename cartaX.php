@@ -50,15 +50,17 @@ $obj = new \equipo\Objeto();
 			<p><h1>Carta de <?php echo $duenoCarta;?></h1></p>
 			<?php
 				$objetos = $obj->recuperarCartaSinExtra($duenoCarta);
+				$objetosEx = $obj->recuperarExtras($duenoCarta);
 				if(empty($objetos)){
 			?>	
 					<p><h2>Error al recuperar la carta</h2></p>
 			<?php
 				}
 				else{
-					$obj->formularioCartaX($objetos);
+					$obj->formularioCartaX($objetos, $objetosEx);
 				}
-			?>
+			?>	
+					
 			
 			<button class="ui-btn ui-icon-plus ui-btn-icon-top" type="button" onclick="location.href = './anadirExtra.php'" >AÑADIR EXTRA</button>
 			<div class='ui-grid-a'>

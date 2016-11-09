@@ -44,6 +44,27 @@ class Objeto {
 
   }
 
+  public static function recuperarExtras($nick){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();  
+    $query = sprintf("SELECT * FROM objetos where nick = '$nick' and esExtra = 1");
+    $rs = $conn->query($query);
+    $objetos = null;
+    if($rs){
+      $i=1;
+      
+      while($fila = $rs->fetch_assoc()) { 
+        $objetos[$i] = $fila;
+        $i++;
+      } 
+      
+      $rs->free();
+    }
+
+    return $objetos;
+
+  }
+
    public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
@@ -112,12 +133,25 @@ class Objeto {
     
   }
 
-  public function formularioCartaX($objetos){
+  public function formularioCartaX($objetos, $objetosEx){
     echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
+    echo "<fieldset data-role='controlgroup'>";
     foreach ($objetos as $objeto) {
       echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
       echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
     }
+    if(!empty($objetosEx)){
+      echo "<div class = 'separacionHorizontal'></div>";
+
+      echo "<h2>Extras para ".$objeto['nick']." </h2>";
+      foreach ($objetosEx as $objeto) {
+        echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
+        echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."'>";
+      }
+
+    }
+    echo "</fieldset>";
+
     echo "<div class='ui-grid-a'>";
     echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
     echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
@@ -128,10 +162,12 @@ class Objeto {
 
   public function pintarCartas($nombres){
     echo "<form action='cartaX.php' data-ajax='false' method='POST'>";
+    echo "<fieldset data-role='controlgroup'>";
     foreach ($nombres as $nombre) {
       echo "<label for='".$nombre['nick']."'>".$nombre['nick']."</label>";
       echo "<input type='radio' name='nombreUsu' id='".$nombre['nick']."'' value='".$nombre['nick']."' checked>";
     }
+    echo "</fieldset>";
     echo "<button class='ui-btn ui-icon-eye ui-btn-icon-top' type='submit'>VER</button>";
     echo "</form>";
   }

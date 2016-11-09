@@ -40,8 +40,8 @@ $obj = new \equipo\Objeto();
 		<div id="contenedor" data-role = "fieldcontain">
 			<p><h1>Editar objeto</h1></p>
 			<form action="./guardarEditar.php" data-ajax="false" method="POST">
-				<p>Nombre: <input type="text" name="nombre" value="<?php echo $nombre;?>" readonly></p>
-				<label for="descripcion">Descripción</label>
+				<p>Nombre:<input type="text" name="nombre" value="<?php echo $nombre;?>" readonly></p>
+				<p for="descripcion">Descripción:</p>
 				<textarea  name="descripcion" id="textarea" required><?php echo $descripcion;?></textarea>
 				<div class='ui-grid-a'>
 					<div class='ui-block-a'><button class="ui-btn ui-icon-check ui-btn-icon-top" type="submit">Guardar</button></div>
