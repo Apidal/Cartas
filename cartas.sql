@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2016 a las 21:51:28
+-- Tiempo de generación: 11-11-2016 a las 00:56:26
 -- Versión del servidor: 5.5.40
 -- Versión de PHP: 5.5.19
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cartas`
 --
-CREATE DATABASE IF NOT EXISTS `cartas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `cartas`;
 
 -- --------------------------------------------------------
 
@@ -31,7 +29,7 @@ USE `cartas`;
 CREATE TABLE IF NOT EXISTS `objetos` (
   `nombre` varchar(100) NOT NULL,
   `nick` varchar(30) NOT NULL,
-  `ayuda` text NOT NULL,
+  `descripcion` text NOT NULL,
   `comprado` tinyint(1) NOT NULL DEFAULT '0',
   `reservado` tinyint(1) NOT NULL DEFAULT '0',
   `esExtra` tinyint(1) NOT NULL DEFAULT '0'

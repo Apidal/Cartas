@@ -183,7 +183,7 @@ class Objeto {
         echo "<button class='ui-btn ui-icon-delete ui-btn-icon-top' type='button' onclick=\"location.href = ''\" >BORRAR EXTRA</button>";
         echo "<div class='ui-grid-a'>";
           echo "<div class='ui-block-a'><button class='ui-btn ui-icon-bars ui-btn-icon-top' type='button' onclick=\"location.href = './cartas.php'\" >CARTAS</button></div>";
-          echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './Principal.php'\" >PRINCIPAL</button></div>";
+          echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './principal.php'\" >PRINCIPAL</button></div>";
         echo "</div>";
       echo "</div>";
     echo "</form>";

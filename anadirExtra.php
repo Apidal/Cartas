@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Añadir objeto extra</title>
+		<title>Añadir objeto extra</title>
 	
 		<?php require ('includes/headComun.html');?>
 		
@@ -37,8 +37,8 @@ $obj = new \equipo\Objeto();
 				<p for="descripcion">Descripción:</p>
 				<textarea  name="descripcion" id="textarea" required></textarea>
 				<div class='ui-grid-a'>
-					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">Añadir extra</button></div>
-					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './cartaX.php'" >Cancelar</button></div>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">AÑADIR EXTRA</button></div>
+					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './cartaX.php'" >CANCELAR</button></div>
 				</div>
 			</form>
 

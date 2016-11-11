@@ -1,6 +1,4 @@
 <?php
-//session_start();
-//echo "estoy iniciando sesion";
 require_once __DIR__.'/includes/config.php'; 
 require_once __DIR__.'/includes/Objeto.php';
 $obj= new \equipo\Objeto();

@@ -10,7 +10,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Principal </title>
+		<title>Principal</title>
 	
 		<?php require ('includes/headComun.html');?>
 				

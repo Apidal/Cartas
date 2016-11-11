@@ -1,12 +1,9 @@
 <?php
-//session_start();
-//echo "estoy iniciando sesion";
+
 require_once __DIR__.'/includes/config.php'; 
 require_once __DIR__.'/includes/Usuario.php';
 $usuario= new \equipo\Usuario();
 
-
-//echo var_dump($urlseparada);
 $pass1 = "";
 $nick = ucwords(strtolower($_POST["nick"]));
 $pass1 = $_POST["pass"];

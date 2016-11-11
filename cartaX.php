@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Carta </title>
+		<title>Carta</title>
 	
 		<?php require ('includes/headComun.html');?>
 				
@@ -55,7 +55,7 @@ $obj = new \equipo\Objeto();
 					<p><h2>Error al recuperar la carta</h2></p>
 					<div class = 'separacionHorizontal'></div>
 					<button type="button" class='ui-btn ui-icon-bars ui-btn-icon-top' onclick="location.href = './cartas.php'" >CARTAS</button>
-					<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+					<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './principal.php'" >PRINCIPAL</button>
 			<?php
 				}
 				else{

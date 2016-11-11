@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Mi Carta </title>
+		<title>Mi Carta</title>
 	
 		<?php require ('includes/headComun.html');?>
 			
@@ -44,7 +44,7 @@ $obj = new \equipo\Objeto();
 				else
 					$obj->formularioMiCarta($misObjetos);
 			?>
-			<button  type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button  type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

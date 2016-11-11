@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Cartas </title>
+		<title>Cartas</title>
 	
 		<?php require ('includes/headComun.html');?>
 				
@@ -43,7 +43,7 @@ $obj = new \equipo\Objeto();
 					$obj->pintarCartas($cartas);
 			?>
 			
-			<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './Principal.php'" >PRINCIPAL</button>
+			<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './principal.php'" >PRINCIPAL</button>
 			
 		</div> <!-- FIN Contenedor -->
 	

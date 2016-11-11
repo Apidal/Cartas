@@ -12,6 +12,7 @@ $pass = $_POST["pass"];
 //$pass = sha1($pass);
 
 if($user->login($nick,$pass)){
+	$nick = ucwords(strtolower($_POST["nick"]));
 	$_SESSION['nombre'] = $nick;
 	header("Location:principal.php");
 	$page = $_SERVER['principal.php'];

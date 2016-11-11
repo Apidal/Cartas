@@ -11,7 +11,7 @@ $obj = new \equipo\Objeto();
 <!DOCTYPE HTML>
 <hmtl>
 	<head>
-		<title> Editar Objeto </title>
+		<title>Editar Objeto</title>
 	
 		<?php require ('includes/headComun.html');?>
 				
@@ -43,8 +43,8 @@ $obj = new \equipo\Objeto();
 				<p for="descripcion">Descripción:</p>
 				<textarea  name="descripcion" id="textarea" required><?php echo $descripcion;?></textarea>
 				<div class='ui-grid-a'>
-					<div class='ui-block-a'><button class="ui-btn ui-icon-check ui-btn-icon-top" type="submit">Guardar</button></div>
-					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'">Cancelar</button></div>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-check ui-btn-icon-top" type="submit">GUARDAR</button></div>
+					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './miCarta.php'">CANCELAR</button></div>
 				</div>
 			</form>
 

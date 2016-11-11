@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/config.php';
-require_once __DIR__.'/includes/usuario.php';
-$user= new \equipo\usuario();
+require_once './includes/config.php';
+require_once __DIR__.'/includes/Usuario.php';
+$user= new \equipo\Usuario();
 
 ?>
 <!DOCTYPE HTML>
