@@ -18,11 +18,10 @@ if(!$usuario->compruebaSimilPass($pass1,$pass2)){
 }
 elseif($usuario->existeUsuario($nick)){
 	$usuario->cambiarPass($nick,$pass1);
-	header("Location:./");
+	header("Location:./#inicio");
 }
 else{
-	$usuario->registraUsuario($nick,$pass1);
-	header("Location:./");
+	header("Location:./cambiar_contra.php");
 }
 
 ?>

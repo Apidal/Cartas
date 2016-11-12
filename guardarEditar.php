@@ -12,7 +12,7 @@ if(isset($_SESSION['nombre'])){
 	$descripcion = $_POST["descripcion"];
 
 	if($nombre !== "" && $descripcion !== "")
-		$obj->editarObjetoPropio($nick, $nombre, $descripcion);
+		$obj->editarDescripcion($nick, $nombre, $descripcion);
 	header("Location:./miCarta.php");
 }
 else

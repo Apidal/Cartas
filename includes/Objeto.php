@@ -65,10 +65,10 @@ class Objeto {
 
   }
 
-   public function cartasOtros($nick){
+   /*public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nick FROM objetos where nick <> '$nick' AND esExtra = 0 group by nick");
+    $query = sprintf("SELECT nick FROM usuario where nick <> '$nick' group by nick");
     $rs = $conn->query($query);
     $cartas = null;
     if($rs){
@@ -85,11 +85,11 @@ class Objeto {
     return $cartas;
 
   }
-
-  public function anadirObjeto($nick, $nombre, $descripcion, $esExtra){
+*/
+  public function anadirObjeto($nick, $nombre, $descripcion, $esExtra, $escritorExtra){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$descripcion', 0, 0, $esExtra)");
+    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$descripcion', 0, 0, $esExtra, '$escritorExtra')");
     $rs = $conn->query($query);
   }
 
@@ -100,7 +100,7 @@ class Objeto {
     $rs = $conn->query($query);
   }
 
-   public function editarObjetoPropio($nick, $nombre, $descripcion){
+   public function editarDescripcion($nick, $nombre, $descripcion){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
     $query = sprintf("UPDATE objetos SET descripcion = '$descripcion' WHERE nick='$nick' AND nombre = '$nombre'");
@@ -134,27 +134,31 @@ class Objeto {
       return "libre";
   }
 
-  public function formularioCartaX($objetos, $objetosEx){
-    echo "<form action='com_lib_res_obj.php' data-ajax='false' method='POST'>";
+  public function formularioCartaX($objetos, $objetosEx, $duenoCarta){
+    echo "<form action='' data-ajax='false' method='POST'>";
       echo "<fieldset data-role='controlgroup'>";
-        foreach ($objetos as $objeto) {
-          //echo "<div id ='izquierda'>";
-          echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
-          echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
-          //echo "</div>";
-          $idObjeto = str_replace(' ', '_', $objeto['nombre']);
-          echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='window' data-transition='flip'> f</a>";
-          echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
-            echo "<h3>Descripción de ".$objeto['nombre']."</h3>";
-            echo "----------------------------------";
-            echo "</br></br>";
-            echo $objeto['descripcion'];
-          echo "</div>";
+        if(empty($objetos))
+          echo "<p><h2>".$duenoCarta." todavía no ha añadido nada</h2></p>";
+        else{        
+          foreach ($objetos as $objeto) {
+            //echo "<div id ='izquierda'>";
+            echo "<label for='".$objeto['nombre']."' class =".$this->pintarClase($objeto).">".$objeto['nombre']."</label>";
+            echo "<input type='radio' name='nomObj' id='".$objeto['nombre']."' value='".$objeto['nombre']."' checked>";
+            //echo "</div>";
+            $idObjeto = str_replace(' ', '_', $objeto['nombre']);
+            echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='window' data-transition='flip'> f</a>";
+            echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content' data-overlay-theme='b'>";
+              echo "<h3>Descripción de ".$objeto['nombre']."</h3>";
+              echo "----------------------------------";
+              echo "</br></br>";
+              echo $objeto['descripcion'];
+            echo "</div>";
+          }
         }
         if(!empty($objetosEx)){
           echo "<div class = 'separacionHorizontal'></div>";
 
-          echo "<h2>Extras para ".$objeto['nick']." </h2>";
+          echo "<h2>Extras para ".$duenoCarta." </h2>";
           foreach ($objetosEx as $objetoEx) {
             //echo "<div id ='izquierda'>";
             echo "<label for='".$objetoEx['nombre']."' class =".$this->pintarClase($objetoEx).">".$objetoEx['nombre']."</label>";
@@ -162,7 +166,7 @@ class Objeto {
             //echo "</div>";
             $idObjeto = str_replace(' ', '_', $objetoEx['nombre']);
             echo "<a href='#".$idObjeto."_poppup' data-rel='popup' class='ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all ui-shadow ui-nodisc-icon ui-alt-icon' data-position-to='window' data-transition='flip'> f</a>";
-            echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content'>";
+            echo "<div data-role='popup' id='".$idObjeto."_poppup' class='ui-content' data-overlay-theme='b'>";
               echo "<h3>Descripción de ".$objetoEx['nombre']."</h3>";
               echo "----------------------------------";
               echo "</br></br>";
@@ -176,11 +180,11 @@ class Objeto {
       echo "<div class = 'separacionHorizontal'></div>";
 
       echo "<div class='ui-grid-a'>";
-        echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO'>COMPRADO</button></div>";
-        echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO'>RESERVADO</button></div>";
-        echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR'>LIBERAR OBJETO</button>";
+        echo "<div class='ui-block-a'><button class='ui-btn ui-icon-shop ui-btn-icon-top' type='submit' name ='COMPRADO' onclick=this.form.action='com_lib_res_obj.php'>COMPRADO</button></div>";
+        echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO' onclick=this.form.action='com_lib_res_obj.php'>RESERVADO</button></div>";
+        echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR' onclick=this.form.action='com_lib_res_obj.php'>LIBERAR OBJETO</button>";
         echo "<button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirExtra.php'\" >AÑADIR EXTRA</button>";
-        echo "<button class='ui-btn ui-icon-delete ui-btn-icon-top' type='button' onclick=\"location.href = ''\" >BORRAR EXTRA</button>";
+        echo "<button class='ui-btn ui-icon-delete ui-btn-icon-top' type='submit' onclick=this.form.action='./borrarExtra.php'>BORRAR EXTRA</button>";
         echo "<div class='ui-grid-a'>";
           echo "<div class='ui-block-a'><button class='ui-btn ui-icon-bars ui-btn-icon-top' type='button' onclick=\"location.href = './cartas.php'\" >CARTAS</button></div>";
           echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './principal.php'\" >PRINCIPAL</button></div>";
@@ -213,12 +217,13 @@ class Objeto {
     return $fila['descripcion'];
   }
 
-  public function borrarExtra($nombre){
+  public function borrarExtra($nombrePersona, $duenoCarta, $nombreObj){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("DELETE FROM objetos where nombre = '$nombre' AND esExtra = 1");
+    $query = sprintf("DELETE FROM objetos where nick = '$duenoCarta' AND nombre = '$nombreObj' AND escritorExtra = '$nombrePersona'AND esExtra = 1");
     $rs = $conn->query($query);
-    $fila = $rs->fetch_assoc();
+    if($fila > 0)
+      $fila = $rs->fetch_assoc();
   }
 
 

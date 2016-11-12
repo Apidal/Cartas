@@ -12,10 +12,16 @@ $user= new \equipo\Usuario();
 	</head>
 
 <body>
-	<?php
+
+	<div id="pageone" data-role="page">
+		<a href="#inicio" data-position-to="Window"> <img id = "imagenPortada" src="views/portada.jpg" alt="Portada View" style="width:100%;"></a>
+	</div>
+	
+	<div id="inicio" data-role="page">
+		<?php
 		if(isset($_SESSION['nombre']))
 			header("Location:./principal.php");
-	?>
+		?>
 	
 		<!-- === CONTENIDO === -->
 		<div id="contenedor">
@@ -36,6 +42,7 @@ $user= new \equipo\Usuario();
 			</form>
 
 		</div> <!-- FIN Contenedor -->
+	</div>
 
 	</body>
 </html>

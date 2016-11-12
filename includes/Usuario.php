@@ -61,14 +61,35 @@ class Usuario {
 		$rs = $conn->query($query);
 	}
 		  
-	public function registraUsuario($nick,$password) {
+	/*public function registraUsuario($nick,$password) {
 
 		$app = App::getSingleton();
 		$conn = $app->conexionBd();
     $password = sha1($password);
 		$query = sprintf("INSERT INTO usuario (nick,password) VALUES ('$nick','$password')");
 		$rs = $conn->query($query);
-	}
+	}*/
+
+  public function recuperarNombres($nick){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT nick FROM usuario where nick <> '$nick' group by nick");
+    $rs = $conn->query($query);
+    $usuarios = null;
+    if($rs){
+      $i=1;
+      
+      while($fila = $rs->fetch_assoc()) { 
+        $usuarios[$i] = $fila;
+        $i++;
+      } 
+      
+      $rs->free();
+    }
+
+    return $usuarios;
+
+  }
  
 	
 }

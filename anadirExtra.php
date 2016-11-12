@@ -37,7 +37,7 @@ $obj = new \equipo\Objeto();
 				<p for="descripcion">Descripción:</p>
 				<textarea  name="descripcion" id="textarea" required></textarea>
 				<div class='ui-grid-a'>
-					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">AÑADIR EXTRA</button></div>
+					<div class='ui-block-a'><button class="ui-btn ui-icon-plus ui-btn-icon-top" type="submit">AÑADIR</button></div>
 					<div class='ui-block-b'><button class="ui-btn ui-icon-delete ui-btn-icon-top" type="button" onclick="location.href = './cartaX.php'" >CANCELAR</button></div>
 				</div>
 			</form>

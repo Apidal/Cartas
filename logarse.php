@@ -1,15 +1,12 @@
 <?php
-//session_start();
-//echo "estoy iniciando sesion";
+
 require_once __DIR__.'/includes/config.php'; 
 require_once __DIR__.'/includes/Usuario.php';
 $user= new \equipo\Usuario();
 
-
-//echo var_dump($urlseparada);
 $nick = $_POST["nick"];
 $pass = $_POST["pass"];
-//$pass = sha1($pass);
+
 
 if($user->login($nick,$pass)){
 	$nick = ucwords(strtolower($_POST["nick"]));
@@ -20,6 +17,6 @@ if($user->login($nick,$pass)){
 	header("Refresh: 0; url=$page");
 }
 else
-	header("Location:./");
+	header("Location:./#inicio");
 
 ?>

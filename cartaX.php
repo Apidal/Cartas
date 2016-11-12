@@ -50,17 +50,9 @@ $obj = new \equipo\Objeto();
 			<?php
 				$objetos = $obj->recuperarCartaSinExtra($duenoCarta);
 				$objetosEx = $obj->recuperarExtras($duenoCarta);
-				if(empty($objetos)){
-			?>	
-					<p><h2>Error al recuperar la carta</h2></p>
-					<div class = 'separacionHorizontal'></div>
-					<button type="button" class='ui-btn ui-icon-bars ui-btn-icon-top' onclick="location.href = './cartas.php'" >CARTAS</button>
-					<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './principal.php'" >PRINCIPAL</button>
-			<?php
-				}
-				else{
-					$obj->formularioCartaX($objetos, $objetosEx);
-				}
+				
+				$obj->formularioCartaX($objetos, $objetosEx, $duenoCarta);
+				
 			?>	
 		</div> <!-- FIN Contenedor -->
 	
