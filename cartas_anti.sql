@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2016 a las 19:14:20
+-- Tiempo de generación: 12-11-2016 a las 03:48:12
 -- Versión del servidor: 5.5.40
 -- Versión de PHP: 5.5.19
 
@@ -33,9 +33,7 @@ CREATE TABLE IF NOT EXISTS `objetos` (
   `comprado` tinyint(1) NOT NULL DEFAULT '0',
   `reservado` tinyint(1) NOT NULL DEFAULT '0',
   `esExtra` tinyint(1) NOT NULL DEFAULT '0',
-  `escritorExtra` varchar(30) DEFAULT NULL,
-  `personaUltimoCambio` varchar(30) DEFAULT NULL,
-  `ultimoCambio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `escritorExtra` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

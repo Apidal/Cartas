@@ -16,13 +16,13 @@ if(isset($_SESSION['nombre'])){
 	
 
 	if (isset($_POST['COMPRADO'])){ 
-		$obj->editarObjeto($duenoCarta, $nombre, 1, 1);
+		$obj->editarObjeto($duenoCarta, $nombre, 1, 1, $nick);
 	}
 	elseif (isset($_POST['RESERVADO'])){
-		$obj->editarObjeto($duenoCarta, $nombre, 0, 1);
+		$obj->editarObjeto($duenoCarta, $nombre, 0, 1, $nick);
 	}
 	else if (isset($_POST['LIBERAR'])){
-		$obj->editarObjeto($duenoCarta, $nombre, 0, 0);
+		$obj->editarObjeto($duenoCarta, $nombre, 0, 0, $nick);
 	}
 	
 	header("Location:./cartaX.php");

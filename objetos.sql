@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2016 a las 19:14:20
+-- Tiempo de generación: 19-11-2016 a las 19:15:51
 -- Versión del servidor: 5.5.40
 -- Versión de PHP: 5.5.19
 
@@ -38,17 +38,6 @@ CREATE TABLE IF NOT EXISTS `objetos` (
   `ultimoCambio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `nick` varchar(30) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Índices para tablas volcadas
 --
@@ -58,12 +47,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 ALTER TABLE `objetos`
  ADD PRIMARY KEY (`nombre`,`nick`), ADD KEY `nick` (`nick`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
- ADD PRIMARY KEY (`nick`);
 
 --
 -- Restricciones para tablas volcadas
