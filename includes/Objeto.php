@@ -65,10 +65,10 @@ class Objeto {
 
   }
 
-   /*public function cartasOtros($nick){
+   public function cartasOtros($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nick FROM usuario where nick <> '$nick' group by nick");
+    $query = sprintf("SELECT u.nick, o.ultimoCambio FROM (SELECT * FROM objetos ORDER BY ultimoCambio DESC) o RIGHT JOIN usuario u on u.nick = o.nick WHERE u.nick <> '$nick' GROUP BY o.nick, u.nick ORDER BY o.ultimoCambio DESC");
     $rs = $conn->query($query);
     $cartas = null;
     if($rs){
@@ -85,25 +85,29 @@ class Objeto {
     return $cartas;
 
   }
-*/
+
   public function anadirObjeto($nick, $nombre, $descripcion, $esExtra, $escritorExtra){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$descripcion', 0, 0, $esExtra, '$escritorExtra')");
+    if($escritorExtra == null)
+      $personaCambio = null;
+    else
+      $personaCambio = $escritorExtra;
+    $query = sprintf("INSERT INTO objetos VALUES ('$nombre', '$nick','$descripcion', 0, 0, $esExtra, '$escritorExtra', '$personaCambio', CURRENT_TIMESTAMP)");
     $rs = $conn->query($query);
   }
 
-   public function editarObjeto($nick, $nombre, $comprado, $reservado){
+   public function editarObjeto($nick, $nombre, $comprado, $reservado, $personaCambio){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE objetos SET comprado = $comprado, reservado = $reservado WHERE nick='$nick' AND nombre = '$nombre'");
+    $query = sprintf("UPDATE objetos SET comprado = $comprado, reservado = $reservado, personaUltimoCambio = '$personaCambio', ultimoCambio = CURRENT_TIMESTAMP WHERE nick='$nick' AND nombre = '$nombre'");
     $rs = $conn->query($query);
   }
 
    public function editarDescripcion($nick, $nombre, $descripcion){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE objetos SET descripcion = '$descripcion' WHERE nick='$nick' AND nombre = '$nombre'");
+    $query = sprintf("UPDATE objetos SET descripcion = '$descripcion', ultimoCambio = CURRENT_TIMESTAMP WHERE nick='$nick' AND nombre = '$nombre'");
     $rs = $conn->query($query);
   }
 

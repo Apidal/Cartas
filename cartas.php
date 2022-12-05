@@ -33,14 +33,14 @@ $obj = new \equipo\Objeto();
 		<div id="contenedor" data-role="fieldcontain">
 			<p><h1>Cartas</h1></p>
 			<?php
-				$usuarios = $user->recuperarNombres($nick);
-				if(empty($usuarios)){
+				$cartas = $obj->cartasOtros($nick);
+				if(empty($cartas)){
 			?>	
 					<p><h2>Error al recuperar las cartas</h2></p>
 			<?php
 				}
 				else
-					$obj->pintarCartas($usuarios);
+					$obj->pintarCartas($cartas);
 			?>
 			
 			<button type="button" class='ui-btn ui-icon-home ui-btn-icon-top' onclick="location.href = './principal.php'" >PRINCIPAL</button>

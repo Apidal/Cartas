@@ -70,10 +70,10 @@ class Usuario {
 		$rs = $conn->query($query);
 	}*/
 
-  public function recuperarNombres($nick){
+  /*public function recuperarNombres($nick){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT nick FROM usuario where nick <> '$nick' group by nick");
+    $query = sprintf("SELECT nick FROM usuario where nick <> '$nick' GROUP BY nick ORDER BY ultimoCambio DESC");
     $rs = $conn->query($query);
     $usuarios = null;
     if($rs){
@@ -89,7 +89,7 @@ class Usuario {
 
     return $usuarios;
 
-  }
+  }*/
  
 	
 }
