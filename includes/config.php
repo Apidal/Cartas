@@ -1,9 +1,9 @@
 <?php
 
-define('BD_HOST', 'localhost');
-define('BD_NAME', 'cartas');
-define('BD_USER', 'admin');
-define('BD_PASS', 'admin');
+define('BD_HOST', 'sql210.infinityfree.com');
+define('BD_NAME', 'if0_37798050_carta');
+define('BD_USER', 'if0_37798050');
+define('BD_PASS', 'R4gqtUb8soONFow');
 define('RAIZ_APP', __DIR__);
 define('RUTA_APP', '/cartas/');
 define('RUTA_IMGS', RUTA_APP.'img/');
