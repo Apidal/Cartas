@@ -104,10 +104,17 @@ class Objeto {
     $rs = $conn->query($query);
   }
 
-   public function editarDescripcion($nick, $nombre, $descripcion){
+   public function editarDescripcion($nick, $nombre, $descripcion, $duenoCarta){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE objetos SET descripcion = '$descripcion', ultimoCambio = CURRENT_TIMESTAMP WHERE nick='$nick' AND nombre = '$nombre'");
+
+    if ($duenoCarta !== "") {
+      $query = sprintf("UPDATE objetos SET descripcion = '$descripcion', ultimoCambio = CURRENT_TIMESTAMP WHERE escritorExtra = '$nick' AND nick='$duenoCarta' AND nombre = '$nombre'");
+    }
+    else {
+      $query = sprintf("UPDATE objetos SET descripcion = '$descripcion', ultimoCambio = CURRENT_TIMESTAMP WHERE nick='$nick' AND nombre = '$nombre'");
+    }
+    
     $rs = $conn->query($query);
   }
 
@@ -140,6 +147,7 @@ class Objeto {
 
   public function formularioCartaX($objetos, $objetosEx, $duenoCarta){
     echo "<form action='' data-ajax='false' method='POST'>";
+      echo "<input type='hidden' name='duenoCarta' value='".$duenoCarta."'>";
       echo "<fieldset data-role='controlgroup'>";
         if(empty($objetos))
           echo "<p><h2>".$duenoCarta." todavía no ha añadido nada</h2></p>";
@@ -188,7 +196,10 @@ class Objeto {
         echo "<div class='ui-block-b'><button class='ui-btn ui-icon-lock ui-btn-icon-top' type='submit' name ='RESERVADO' onclick=this.form.action='com_lib_res_obj.php'>RESERVADO</button></div>";
         echo "<button class='ui-btn ui-icon-action ui-btn-icon-top' type='submit' name ='LIBERAR' onclick=this.form.action='com_lib_res_obj.php'>LIBERAR OBJETO</button>";
         echo "<button class='ui-btn ui-icon-plus ui-btn-icon-top' type='button' onclick=\"location.href = './anadirExtra.php'\" >AÑADIR EXTRA</button>";
-        echo "<button class='ui-btn ui-icon-delete ui-btn-icon-top' type='submit' onclick=this.form.action='./borrarExtra.php'>BORRAR EXTRA</button>";
+        echo "<div class='ui-grid-a'>";
+          echo "<div class='ui-block-a'><button class='ui-btn ui-icon-edit ui-btn-icon-top' type='submit' onclick=this.form.action='./editarObjeto.php'>EDITAR EXTRA</button></div>";
+          echo "<div class='ui-block-b'><button class='ui-btn ui-icon-delete ui-btn-icon-top' type='submit' onclick=this.form.action='./borrarExtra.php'>BORRAR EXTRA</button></div>";
+        echo "</div>";
         echo "<div class='ui-grid-a'>";
           echo "<div class='ui-block-a'><button class='ui-btn ui-icon-bars ui-btn-icon-top' type='button' onclick=\"location.href = './cartas.php'\" >CARTAS</button></div>";
           echo "<div class='ui-block-b'><button class='ui-btn ui-icon-home ui-btn-icon-top' type='button' onclick=\"location.href = './principal.php'\" >PRINCIPAL</button></div>";
@@ -224,7 +235,7 @@ class Objeto {
   public function borrarExtra($nombrePersona, $duenoCarta, $nombreObj){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("DELETE FROM objetos where nick = '$duenoCarta' AND nombre = '$nombreObj' AND escritorExtra = '$nombrePersona'AND esExtra = 1");
+    $query = sprintf("DELETE FROM objetos where nick = '$duenoCarta' AND nombre = '$nombreObj' AND escritorExtra = '$nombrePersona' AND esExtra = 1");
     $rs = $conn->query($query);
     if($fila > 0)
       $fila = $rs->fetch_assoc();
