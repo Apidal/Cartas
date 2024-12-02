@@ -10,10 +10,15 @@ if(isset($_SESSION['nombre'])){
 	$nick = $_SESSION['nombre'];
 	$nombre = $_POST["nombre"];
 	$descripcion = $_POST["descripcion"];
+	$duenoCarta = $_POST['duenoCarta'];
 
 	if($nombre !== "" && $descripcion !== "")
-		$obj->editarDescripcion($nick, $nombre, $descripcion);
-	header("Location:./miCarta.php");
+		$obj->editarDescripcion($nick, $nombre, $descripcion, $duenoCarta);
+
+	if($duenoCarta !== "")
+		header("Location:./cartaX.php");
+	else
+		header("Location:./miCarta.php");
 }
 else
 	header("Location:./");
